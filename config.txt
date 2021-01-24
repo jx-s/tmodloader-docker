@@ -1,16 +1,45 @@
 # See wiki for details
 # https://terraria.gamepedia.com/Guide:Setting_up_a_Terraria_server#Making_a_configuration_file
 
-maxplayers=8
-worldname=World
+# 加载世界并自动启动服务器
 world=/terraria/ModLoader/Worlds/World.wld
-port=7777
-#password=
-motd=Please don’t cut the purple trees!
-worldpath=/terraria/ModLoader/Worlds
-autocreate=1
+# 如果未找到任何世界，将创建一个新世界，世界大小由： 1（小）、2（中）和 3（大）指定
+autocreate=3
+# 自动创建时设置世界种子
+seed=AwesomeSeed
+# 自动创建时设置世界名称
+worldname=World
+# 自动创建时的世界难度。选项： 0 （正常）， 1 （专家）， 2 （主）， 3 （旅程）
 difficulty=0
-#banlist=banlist.txt
+# 设置服务器上允许的最大玩家数。值必须介于 1 和 255 之间
+maxplayers=100
+# 设置端口号
+port=7777
+# 设置服务器密码
+password=19931227Sjx
+# 设置当天的信息
+motd=Please don’t cut the purple trees!
+# 设置存储世界文件的文件夹
+worldpath=/terraria/ModLoader/Worlds
+# 禁止列表
+banlist=banlist.txt
+# 添加额外的作弊保护
 secure=1
-#priority=0
-#language=en/US
+# 设置服务器语言
+# 可用代码：
+# en/US• 英语
+# de/DE• 德语
+# it/IT• 意大利语
+# fr/FR• 法语
+# es/ES• 西班牙语
+# ru/RU• 俄语
+# zh/Hans• 中文
+# pt/BR• 葡萄牙语
+# pl/PL• 波兰语
+language=zh/Hans
+# 使用 uPNP 自动转发端口
+# upnp=1
+# 减少敌人跳过，但增加带宽使用。跳槽数越低，但发送的数据就更多了
+npcstream=60
+# 默认系统优先级 0：实时，1：高，2：高于正常，3：正常，4：低于正常，5：空闲
+priority=1

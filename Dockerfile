@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.10 as build
 
-ARG TMOD_VERSION=0.11.7.8
+ARG TMOD_VERSION=0.11.8
 ARG TERRARIA_VERSION=1353
 
 RUN apk update &&\
@@ -28,13 +28,16 @@ WORKDIR /terraria-server
 COPY --from=build /terraria-server ./
 
 RUN apk update &&\
-    apk add --no-cache procps tmux
+    apk add --no-cache procps tmux &&\
+    apk add --no-cache tzdata
+
 RUN ln -s ${HOME}/.local/share/Terraria/ /terraria
 COPY inject.sh /usr/local/bin/inject
 COPY handle-idle.sh /usr/local/bin/handle-idle
 
 EXPOSE 7777
-ENV TMOD_SHUTDOWN_MSG="Shutting down!"
+ENV TZ="Asia/Shanghai"
+ENV TMOD_SHUTDOWN_MSG="GoodBye!"
 ENV TMOD_AUTOSAVE_INTERVAL="*/10 * * * *"
 ENV TMOD_IDLE_CHECK_INTERVAL=""
 ENV TMOD_IDLE_CHECK_OFFSET=0
